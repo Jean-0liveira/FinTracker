@@ -1,6 +1,6 @@
 # 💰 FinTrack
 
-Sistema de controle de finanças pessoais via console, desenvolvido em **Java** como projeto prático de um curso EAD. O objetivo é aplicar e evoluir conceitos de **Programação Orientada a Objetos (POO)** ao longo do curso, partindo de uma versão simples em console até futuras expansões com relatórios gráficos, persistência em banco de dados e integração com APIs.
+Sistema de controle de finanças pessoais via console, desenvolvido em **Java** como projeto prático de um curso EAD. O objetivo é aplicar e evoluir conceitos de **Java** ao longo do curso, partindo de uma versão simples em console até futuras expansões com relatórios gráficos, persistência em banco de dados e integração com APIs.
 
 > 🚧 Projeto em desenvolvimento contínuo — este README será atualizado conforme novas funcionalidades forem adicionadas.
 
