@@ -28,6 +28,14 @@ public class FinTracker {
         return calcularSaldo(repositorio.listar());
     }
 
+    public double calcularTotalPorTipo(Tipo tipo) {
+        double total = 0;
+        for (Transacao transacao : repositorio.filtrar(t -> t.getTipo() == tipo)) {
+            total += transacao.getValor();
+        }
+        return total;
+    }
+
     public static double calcularSaldo(Collection<? extends Transacao> transacoes) {
         double saldo = 0;
         for (Transacao transacao : transacoes) {
