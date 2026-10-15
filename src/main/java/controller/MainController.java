@@ -9,10 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Tipo;
 import model.Transacao;
 import utils.Formatador;
 
@@ -35,7 +37,28 @@ public class MainController {
         colDescricao.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDescricao()));
         colTipo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTipo().name()));
         colValor.setCellValueFactory(c -> new SimpleStringProperty(Formatador.formatarMoeda(c.getValue().getValor())));
+        configurarCelulaColorida(colTipo);
+        configurarCelulaColorida(colValor);
         tabela.setItems(dados);
+    }
+
+    private void configurarCelulaColorida(TableColumn<Transacao, String> coluna) {
+        coluna.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                getStyleClass().removeAll("receita", "despesa");
+                if (empty || item == null) {
+                    setText(null);
+                    return;
+                }
+                setText(item);
+                Transacao transacao = getTableRow() == null ? null : getTableRow().getItem();
+                if (transacao != null) {
+                    getStyleClass().add(transacao.getTipo() == Tipo.RECEITA ? "receita" : "despesa");
+                }
+            }
+        });
     }
 
     public void setFinTracker(FinTracker finTracker) {

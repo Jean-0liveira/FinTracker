@@ -125,3 +125,15 @@
     -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
+
+.table-cell.receita,
+.table-row-cell:filled:selected .table-cell.receita {
+    -fx-text-fill: -cor-receita;
+    -fx-font-weight: bold;
+}
+
+.table-cell.despesa,
+.table-row-cell:filled:selected .table-cell.despesa {
+    -fx-text-fill: -cor-despesa;
+    -fx-font-weight: bold;
+}
