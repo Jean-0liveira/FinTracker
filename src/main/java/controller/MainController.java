@@ -53,12 +53,7 @@ public class MainController {
         Parent root = loader.load();
         NovaTransacaoController dialogo = loader.getController();
 
-        Stage janela = new Stage();
-        janela.setTitle("Nova transação");
-        janela.initModality(Modality.APPLICATION_MODAL);
-        janela.initOwner(tabela.getScene().getWindow());
-        janela.setScene(new Scene(root));
-        janela.setResizable(false);
+        Stage janela = criarJanelaModal("Nova transação", root);
         janela.showAndWait();
 
         Transacao nova = dialogo.getResultado();
@@ -69,10 +64,30 @@ public class MainController {
     }
 
     @FXML
+    private void abrirRelatorio() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/relatorio-view.fxml"));
+        Parent root = loader.load();
+        RelatorioController relatorio = loader.getController();
+        relatorio.setFinTracker(finTracker);
+
+        criarJanelaModal("Relatório", root).showAndWait();
+    }
+
+    @FXML
     private void remover() {
         Transacao selecionada = tabela.getSelectionModel().getSelectedItem();
         if (selecionada != null && finTracker.removerTransacao(selecionada)) {
             atualizarTabela();
         }
+    }
+
+    private Stage criarJanelaModal(String titulo, Parent root) {
+        Stage janela = new Stage();
+        janela.setTitle(titulo);
+        janela.initModality(Modality.APPLICATION_MODAL);
+        janela.initOwner(tabela.getScene().getWindow());
+        janela.setScene(new Scene(root));
+        janela.setResizable(false);
+        return janela;
     }
 }
