@@ -1,23 +1,29 @@
 package controller;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import model.Tipo;
 import model.Transacao;
+import repository.RepositorioGenerico;
 
 public class FinTracker {
-    private ArrayList<Transacao> transacoes = new ArrayList<>();
+    private final RepositorioGenerico<Transacao> repositorio = new RepositorioGenerico<>();
 
     public void adicionarTransacao(Transacao transacao) {
-        transacoes.add(transacao);
+        repositorio.adicionar(transacao);
     }
 
     public void listarTransacoes() {
-        for (int i = 0; i < transacoes.size(); i++) {
-            System.out.println(i + " - " + transacoes.get(i));
+        int i = 0;
+        for (Transacao transacao : repositorio.listar()) {
+            System.out.println(i++ + " - " + transacao);
         }
     }
 
     public double calcularSaldoTotal() {
+        return calcularSaldo(repositorio.listar());
+    }
+
+    public static double calcularSaldo(Collection<? extends Transacao> transacoes) {
         double saldo = 0;
         for (Transacao transacao : transacoes) {
             if (transacao.getTipo() == Tipo.RECEITA) {
@@ -30,10 +36,6 @@ public class FinTracker {
     }
 
     public boolean removerTransacao(int indice) {
-        if (indice >= 0 && indice < transacoes.size()) {
-            transacoes.remove(indice);
-            return true;
-        }
-        return false;
+        return repositorio.removerPorIndice(indice);
     }
 }
