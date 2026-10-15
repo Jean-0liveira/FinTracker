@@ -22,5 +22,6 @@
     <HBox spacing="8">
         <Button text="Nova transação" onAction="#novaTransacao"/>
         <Button text="Remover selecionada" onAction="#remover"/>
+        <Button text="Relatório" onAction="#abrirRelatorio"/>
     </HBox>
 </VBox>
