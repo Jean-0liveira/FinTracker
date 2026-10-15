@@ -3,3 +3,4 @@ target/
 build/
 dist/
 nbactions.xml
+fintrack.db
