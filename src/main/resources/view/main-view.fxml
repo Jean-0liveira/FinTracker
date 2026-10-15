@@ -2,15 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="12" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
+<VBox spacing="14" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.MainController">
     <padding>
-        <Insets top="16" right="16" bottom="16" left="16"/>
+        <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
+    <Label text="FinTrack" styleClass="titulo"/>
     <TableView fx:id="tabela" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="colData" text="Data" prefWidth="120"/>
@@ -19,9 +21,9 @@
             <TableColumn fx:id="colValor" text="Valor" prefWidth="180"/>
         </columns>
     </TableView>
-    <HBox spacing="8">
-        <Button text="Nova transação" onAction="#novaTransacao"/>
-        <Button text="Remover selecionada" onAction="#remover"/>
+    <HBox spacing="10">
+        <Button text="Nova transação" styleClass="button-primario" onAction="#novaTransacao"/>
         <Button text="Relatório" onAction="#abrirRelatorio"/>
+        <Button text="Remover selecionada" styleClass="button-perigo" onAction="#remover"/>
     </HBox>
 </VBox>

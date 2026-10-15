@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.RelatorioController">
+<VBox spacing="18" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.RelatorioController">
     <padding>
         <Insets top="24" right="24" bottom="24" left="24"/>
     </padding>
-    <Label text="Resumo financeiro"/>
-    <GridPane hgap="24" vgap="12">
+    <Label text="Resumo financeiro" styleClass="titulo"/>
+    <GridPane hgap="24" vgap="14" styleClass="cartao">
         <columnConstraints>
-            <ColumnConstraints minWidth="120"/>
-            <ColumnConstraints minWidth="160"/>
+            <ColumnConstraints minWidth="140"/>
+            <ColumnConstraints minWidth="180"/>
         </columnConstraints>
         <Label text="Total de receitas" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Label fx:id="lblReceitas" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
@@ -28,6 +28,6 @@
         <Label fx:id="lblQuantidade" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
     </GridPane>
     <HBox alignment="CENTER_RIGHT">
-        <Button text="Fechar" onAction="#fechar" defaultButton="true"/>
+        <Button text="Fechar" styleClass="button-primario" onAction="#fechar" defaultButton="true"/>
     </HBox>
 </VBox>

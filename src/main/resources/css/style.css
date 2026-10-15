@@ -1,0 +1,139 @@
+.root {
+    -cor-primaria: #2563eb;
+    -cor-primaria-escura: #1d4ed8;
+    -cor-receita: #16a34a;
+    -cor-despesa: #dc2626;
+    -cor-fundo: #f3f4f6;
+    -cor-texto: #1f2937;
+    -fx-background-color: -cor-fundo;
+    -fx-font-size: 14px;
+    -fx-text-fill: -cor-texto;
+}
+
+.label {
+    -fx-text-fill: -cor-texto;
+}
+
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #e5e7eb;
+}
+
+.button-primario {
+    -fx-background-color: -cor-primaria;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+}
+
+.button-primario:hover {
+    -fx-background-color: -cor-primaria-escura;
+}
+
+.button-perigo {
+    -fx-text-fill: -cor-despesa;
+    -fx-border-color: -cor-despesa;
+}
+
+.button-perigo:hover {
+    -fx-background-color: #fee2e2;
+}
+
+.text-field,
+.combo-box-base {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 6;
+    -fx-padding: 4 8;
+}
+
+.text-field:focused,
+.combo-box-base:focused {
+    -fx-border-color: -cor-primaria;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 8;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f9fafb;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.table-row-cell {
+    -fx-cell-size: 38px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9fafb;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: -cor-texto;
+}
+
+.table-cell {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.cartao {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 8;
+    -fx-padding: 20;
+}
+
+.positivo {
+    -fx-text-fill: -cor-receita;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.negativo {
+    -fx-text-fill: -cor-despesa;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.table-cell.receita,
+.table-row-cell:filled:selected .table-cell.receita {
+    -fx-text-fill: -cor-receita;
+    -fx-font-weight: bold;
+}
+
+.table-cell.despesa,
+.table-row-cell:filled:selected .table-cell.despesa {
+    -fx-text-fill: -cor-despesa;
+    -fx-font-weight: bold;
+}
