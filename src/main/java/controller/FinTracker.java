@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.Collection;
+import java.util.List;
 import model.Tipo;
 import model.Transacao;
 import repository.RepositorioGenerico;
@@ -10,6 +11,10 @@ public class FinTracker {
 
     public void adicionarTransacao(Transacao transacao) {
         repositorio.adicionar(transacao);
+    }
+
+    public List<Transacao> getTransacoes() {
+        return repositorio.listar();
     }
 
     public void listarTransacoes() {
@@ -37,5 +42,9 @@ public class FinTracker {
 
     public boolean removerTransacao(int indice) {
         return repositorio.removerPorIndice(indice);
+    }
+
+    public boolean removerTransacao(Transacao transacao) {
+        return repositorio.remover(transacao);
     }
 }
