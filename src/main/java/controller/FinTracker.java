@@ -1,5 +1,6 @@
 package controller;
 
+import dao.TransacaoDAO;
 import java.util.Collection;
 import java.util.List;
 import model.Tipo;
@@ -8,8 +9,21 @@ import repository.RepositorioGenerico;
 
 public class FinTracker {
     private final RepositorioGenerico<Transacao> repositorio = new RepositorioGenerico<>();
+    private final TransacaoDAO dao;
+
+    public FinTracker() {
+        this.dao = null;
+    }
+
+    public FinTracker(TransacaoDAO dao) {
+        this.dao = dao;
+        repositorio.adicionarTodos(dao.listar());
+    }
 
     public void adicionarTransacao(Transacao transacao) {
+        if (dao != null) {
+            dao.inserir(transacao);
+        }
         repositorio.adicionar(transacao);
     }
 
@@ -49,10 +63,17 @@ public class FinTracker {
     }
 
     public boolean removerTransacao(int indice) {
-        return repositorio.removerPorIndice(indice);
+        List<Transacao> lista = repositorio.listar();
+        if (indice < 0 || indice >= lista.size()) {
+            return false;
+        }
+        return removerTransacao(lista.get(indice));
     }
 
     public boolean removerTransacao(Transacao transacao) {
+        if (dao != null && transacao.getId() != null) {
+            dao.remover(transacao.getId());
+        }
         return repositorio.remover(transacao);
     }
 }
