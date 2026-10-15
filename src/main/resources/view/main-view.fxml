@@ -20,6 +20,7 @@
         </columns>
     </TableView>
     <HBox spacing="8">
+        <Button text="Nova transação" onAction="#novaTransacao"/>
         <Button text="Remover selecionada" onAction="#remover"/>
     </HBox>
 </VBox>
