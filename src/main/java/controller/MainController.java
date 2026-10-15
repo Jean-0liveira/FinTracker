@@ -1,12 +1,18 @@
 package controller;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Transacao;
 import utils.Formatador;
 
@@ -39,6 +45,27 @@ public class MainController {
 
     private void atualizarTabela() {
         dados.setAll(finTracker.getTransacoes());
+    }
+
+    @FXML
+    private void novaTransacao() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/nova-transacao-view.fxml"));
+        Parent root = loader.load();
+        NovaTransacaoController dialogo = loader.getController();
+
+        Stage janela = new Stage();
+        janela.setTitle("Nova transação");
+        janela.initModality(Modality.APPLICATION_MODAL);
+        janela.initOwner(tabela.getScene().getWindow());
+        janela.setScene(new Scene(root));
+        janela.setResizable(false);
+        janela.showAndWait();
+
+        Transacao nova = dialogo.getResultado();
+        if (nova != null) {
+            finTracker.adicionarTransacao(nova);
+            atualizarTabela();
+        }
     }
 
     @FXML
